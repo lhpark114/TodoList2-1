@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
-import AddTodo from './AddTodo'
+import AddTodo from '../AddTodo/AddTodo'
 
 export default function TodoList(){
   const [todos, setTodos] = useState([
-    {id:1,
-    work: '투두',
+    {id:'1',
+    task: '투두리스트 끝내기',
     status: 'done'
     },
 
-    {id:12,
-    work: 'Next 강의',
-    status: 'done'
+    {id:'12',
+    task: 'Next 강의',
+    status: 'progress'
     },
   ]);
 
@@ -19,11 +19,10 @@ export default function TodoList(){
   return (
     <section>
       <ul>
-        {todos.map((todo) => {
-        (
-          <li key={todo.id}>{todo.work}</li>
-        )
-        })}
+        {
+          todos.map((item) => 
+          <li key={item.id}>{item.task}</li>
+        )}
     </ul>
     <AddTodo onAdd={handleAdd}/>
     
