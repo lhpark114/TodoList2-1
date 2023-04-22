@@ -4,7 +4,7 @@ import { MdOutlineCancel } from 'react-icons/md';
 export default function TodoStatus({todo, onUpdate, onDelete}) {
   const { task, status } = todo;
   const handleChange = (e) => {
-    const status = e.target.checked ? 'done' : 'progress';
+    const status = e.target.checked ? 'Done' : 'Progress';
     onUpdate({...todo, status});
     };
 
@@ -15,7 +15,7 @@ export default function TodoStatus({todo, onUpdate, onDelete}) {
       <input 
         type='checkbox' 
         id='checkbox' 
-        checked={status === 'done'}
+        checked={status === 'Done'}
         onChange={handleChange}
         />
       <label htmlFor='checkbox'>{task}</label>

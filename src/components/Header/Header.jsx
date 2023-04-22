@@ -1,20 +1,17 @@
-import React, {useState} from 'react'
+import React  from 'react'
 
-export default function Header(){
-  const [showAll, setShowAll] = useState();
-  const [showDone, setShowDone] = useState();
-  const [showProgress, setShowProgress] = useState();
-
-  const handleAll = () => setShowAll
+export default function Header({filters, filter, onFilterChange}){
   
   return(
-    <ul>
-      <li>
-          <button onClick={handleAll}>All</button>
-          <button onClick={handleDone}>Done</button>
-          <button onClick={handleProgress}>Progress</button>
+    <header>
+      <ul>
+      {filters.map((value, index) => (
+      <li key={index}>
+        <button onClick={() => onFilterChange(value)}>{value}
+        </button>
       </li>
+      ))}
     </ul>
-    
-  )
+    </header>
+  );
 }

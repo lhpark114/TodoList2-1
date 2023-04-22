@@ -11,7 +11,7 @@ export default function AddTodo({ onAdd }){
     if(task.trim().length === 0) {
       return;
     }
-    onAdd({id: uuid4(), task, status: 'progress'});
+    onAdd({id: uuid4(), task, status: 'Progress'});
     setTask('');
   };
   

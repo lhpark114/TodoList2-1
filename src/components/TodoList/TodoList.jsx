@@ -3,10 +3,10 @@ import AddTodo from '../AddTodo/AddTodo'
 import TodoStatus from '../TodoStatus/TodoStatus'
 
 
-export default function TodoList(){
+export default function TodoList({filter}){
   const [todos, setTodos] = useState([
-    {id:'1', task: '투두리스트 끝내기', status: 'done'},
-    {id:'12', task: 'Next 강의', status: 'progress'},
+    {id:'1', task: '투두리스트 끝내기', status: 'Progress'},
+    {id:'12', task: 'Next 강의', status: 'Done'},
   ]);
   
   const handleAdd = (todo) => setTodos([...todos, todo]);
@@ -16,12 +16,14 @@ export default function TodoList(){
 
   const handleDelete = (deleted) => setTodos(
     todos.filter((t) => t.id !== deleted.id));
+
+  const filtered = getFilteredItems(todos, filter);
   
   return (
     <section>
       
       <ul>
-        {todos.map((item) => (
+        {filtered.map((item) => (
               <TodoStatus 
                 key={item.id} 
                 todo={item} 
@@ -33,4 +35,11 @@ export default function TodoList(){
     <AddTodo onAdd={handleAdd}/>
     </section>
   );
+}
+
+function getFilteredItems(todos, filter) {
+  if (filter === 'All') {
+    return todos;
+  }
+  return todos.filter((todo) => todo.status === filter);
 }
