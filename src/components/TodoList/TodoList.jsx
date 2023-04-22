@@ -3,7 +3,7 @@ import AddTodo from '../AddTodo/AddTodo'
 import TodoStatus from '../TodoStatus/TodoStatus'
 
 
-export default function TodoList({filter}){
+export default function TodoList({category}){
   const [todos, setTodos] = useState([
     {id:'1', task: '투두리스트 끝내기', status: 'Progress'},
     {id:'12', task: 'Next 강의', status: 'Done'},
@@ -17,7 +17,7 @@ export default function TodoList({filter}){
   const handleDelete = (deleted) => setTodos(
     todos.filter((t) => t.id !== deleted.id));
 
-  const filtered = getFilteredItems(todos, filter);
+  const filtered = getFilteredItems(todos, category);
   
   return (
     <section>
@@ -37,9 +37,9 @@ export default function TodoList({filter}){
   );
 }
 
-function getFilteredItems(todos, filter) {
-  if (filter === 'All') {
+function getFilteredItems(todos, category) {
+  if (category === 'All') {
     return todos;
   }
-  return todos.filter((todo) => todo.status === filter);
+  return todos.filter((todo) => todo.status === category);
 }

@@ -1,13 +1,13 @@
 import React  from 'react'
 
-export default function Header({filters, filter, onFilterChange}){
+export default function Header({categories, category, onCategoryChange}){
   
   return(
     <header>
       <ul>
-      {filters.map((value, index) => (
+      {categories.map((value, index) => (
       <li key={index}>
-        <button onClick={() => onFilterChange(value)}>{value}
+        <button onClick={() => onCategoryChange(value)}>{value}
         </button>
       </li>
       ))}

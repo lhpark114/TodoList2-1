@@ -3,17 +3,17 @@ import './App.css'
 import TodoList from './components/TodoList/TodoList'
 import Header from './components/Header/Header'
 
-const filters = ['All', 'Done', 'Progress'];
+const categories = ['All', 'Done', 'Progress'];
 export default function App() {
-  const [filter, setFilter] = useState(filters[0]);
+  const [category, setCategory] = useState(categories[0]);
   return (
     <div>
       <Header 
-        filters = {filters}
-        filter = {filter}
-        onFilterChange = {setFilter}
+        categories = {categories}
+        category = {category}
+        onCategoryChange = {setCategory}
         />
-      <TodoList filter = {filter}/>
+      <TodoList category = {category}/>
     </div>
   )
 }
