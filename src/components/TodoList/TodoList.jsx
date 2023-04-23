@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import AddTodo from '../AddTodo/AddTodo'
 import TodoStatus from '../TodoStatus/TodoStatus'
 
-
 export default function TodoList({category}){
   const [todos, setTodos] = useState([
     {id:'1', task: '투두리스트 끝내기', status: 'Progress'},
