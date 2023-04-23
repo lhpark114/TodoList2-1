@@ -22,7 +22,6 @@ export default function TodoList({category}){
   
   return (
     <section>
-      
       <ul>
         {filtered.map((item) => (
               <TodoStatus 
