@@ -2,7 +2,7 @@ import {useState, useContext} from 'react';
 import './App.css'
 import TodoList from './components/TodoList/TodoList'
 import Header from './components/Header/Header'
-import {DarkModeContext, DarkModeProvider} from './context/DarkModeContext';
+import {DarkModeProvider} from './context/DarkModeContext';
 
 const categories = ['All', 'Done', 'Progress'];
 export default function App() {

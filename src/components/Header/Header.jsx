@@ -11,14 +11,17 @@ export default function Header({categories, category, onCategoryChange}){
         {!darkMode && <HiMoon />}
         {darkMode && <HiSun />}
       </button>
+      
       <ul>
-      {categories.map((value, index) => (
-      <li key={index}>
-        <button onClick={() => onCategoryChange(value)}>{value}
-        </button>
-      </li>
-      ))}
+        {categories.map((value, index) => (
+          <li key={index}>
+            <button onClick={() => onCategoryChange(value)}>{value}
+            </button>
+          </li>
+        ))}
     </ul>
     </header>
   );
 }
+
+
