@@ -1,12 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import AddTodo from '../AddTodo/AddTodo'
 import TodoStatus from '../TodoStatus/TodoStatus'
 
 export default function TodoList({category}){
-  const [todos, setTodos] = useState([
-    {id:'1', task: '투두리스트 끝내기', status: 'Progress'},
-    {id:'12', task: 'Next 강의', status: 'Done'},
-  ]);
+  const [todos, setTodos] = useState(() => readTodosFromLocalStorage());
   
   const handleAdd = (todo) => setTodos([...todos, todo]);
   
@@ -16,6 +13,11 @@ export default function TodoList({category}){
   const handleDelete = (deleted) => setTodos(
     todos.filter((t) => t.id !== deleted.id));
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  
   const filtered = getFilteredItems(todos, category);
   
   return (
@@ -34,6 +36,11 @@ export default function TodoList({category}){
     <AddTodo onAdd={handleAdd}/>
     </section>
   );
+}
+
+function readTodosFromLocalStorage() { 
+  const todos = localStorage.getItem('todos'); 
+  return todos ? JSON.parse(todos) : [];
 }
 
 function getFilteredItems(todos, category) {
